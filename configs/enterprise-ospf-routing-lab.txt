@@ -1,0 +1,258 @@
+enterprise-ospf-routing-lab/
+R1>>
+
+ena
+conf t
+int fa 1/0
+no shut
+ip add 198.51.100.2 255.255.255.252
+ex
+int se 3/0
+no shut 
+ip add 203.0.113.1 255.255.255.252
+ex
+int fa 4/0
+no shut
+ip add 192.168.10.1 255.255.255.0
+ex
+int se 2/0
+no shut
+ip add 10.0.14.1 255.255.255.252
+ex
+int fa 0/0
+no shut
+ip add 10.0.123.2 255.255.255.252
+ex
+
+rou osp 1
+rou 1.1.1.1
+net 10.0.123.0 0.0.0.7 are 150
+net 10.0.14.0 0.0.0.3 are 150
+net 192.168.10.0 0.0.0.255 are 150
+net 198.51.100.0 0.0.0.3 ara 150
+net 203.0.113.0 0.0.0.3 ara 150
+end
+wr
+
+show ip interface brief
+show ip ospf
+show ip ospf interface brief
+show ip ospf neighbor
+show ip route ospf
+show running-config
+wr
+
+
+
+
+
+R2>>
+
+ena
+conf t
+int se 2/0
+no shut 
+ip add 10.0.25.1 255.255.255.252
+ex
+int fa 4/0
+no shut
+ip add 192.168.20.1 255.255.255.0
+ex
+int fa 1/0
+no shut
+ip add 10.0.23.1 255.255.255.252
+ex
+int fa 0/0
+no shut
+ip add 10.0.123.1 255.255.255.252
+ex
+rou osp 2
+rou 2.2.2.2
+net 10.0.123.0 0.0.0.7 are 150
+net 10.0.23.0 0.0.0.3 are 150
+net 10.0.25.0 0.0.0.3 are 150
+net 192.168.20.0 0.0.0.255 are 150
+end
+wr
+
+show ip interface brief
+show ip ospf
+show ip ospf interface brief
+show ip ospf neighbor
+show ip route ospf
+show running-config
+wr
+
+
+
+R3>>
+
+ena
+conf t
+int se 2/0
+no shut 
+ip add 10.0.63.1 255.255.255.252
+ex
+int fa 0/0
+no shut
+ip add 10.0.123.3 255.255.255.248
+ex
+int fa 1/0
+no shut
+ip add 10.0.23.2 255.255.255.252
+ex
+int se 3/0
+no shut 
+ip add 10.0.34.1 255.255.255.252
+ex
+
+rou osp 3
+rou 3.3.3.3
+net 10.0.123.0 0.0.0.7 are 150
+net 10.0.23.0 0.0.0.3 are 150
+net 10.0.34.0 0.0.0.3 are 150
+net 10.0.63.0 0.0.0.3 are 150
+end
+wr
+
+show ip interface brief
+show ip ospf
+show ip ospf interface brief
+show ip ospf neighbor
+show ip route ospf
+show running-config
+wr
+
+
+
+
+R4>>
+
+ena
+conf t
+int fa 0/0
+no shut
+ip add 192.168.50.1 255.255.255.0
+ex
+int se 2/0
+no shut 
+ip add 10.0.14.2 255.255.255.252
+ex
+int se 3/0
+no shut
+ip add 10.0.34.2 255.255.255.252
+ex
+
+rou osp 4
+rou 4.4.4.4
+net 10.0.14.0 0.0.0.3 are 150
+net 10.0.34.0 0.0.0.3 are 150
+net 192.168.50.0 0.0.0.255 are 150
+end
+wr
+
+show ip interface brief
+show ip ospf
+show ip ospf interface brief
+show ip ospf neighbor
+show ip route ospf
+show running-config
+wr
+
+
+
+
+
+R5>>
+
+ena
+conf t
+int fa 0/0
+no shut
+ip add 192.168.40.1 255.255.255.0
+ex
+int se 2/0
+no shut 
+ip add 10.0.25.2 255.255.255.252
+ex
+int se 3/0
+no shut
+ip add 10.0.56.1 255.255.255.252
+ex
+
+rou osp 5
+rou 5.5.5.5
+net 10.0.56.0 0.0.0.3 are 150
+net 10.0.25.0 0.0.0.3 are 150
+net 192.168.40.0 0.0.0.255 are 150
+end
+wr
+
+show ip interface brief
+show ip ospf
+show ip ospf interface brief
+show ip ospf neighbor
+show ip route ospf
+show running-config
+wr
+
+
+
+
+R6>>
+
+ena
+conf t
+int fa 0/0
+no shut
+ip add 192.168.60.1 255.255.255.0
+ex
+int se 2/0
+no shut 
+ip add 10.0.56.2 255.255.255.252
+ex
+int se 3/0
+no shut
+ip add 10.0.63.2 255.255.255.252
+ex
+
+rou osp 6
+rou 6.6.6.6
+net 10.0.63.0 0.0.0.3 are 150
+net 10.0.56.0 0.0.0.3 are 150
+net 192.168.60.0 0.0.0.255 are 150
+end
+wr
+
+show ip interface brief
+show ip ospf
+show ip ospf interface brief
+show ip ospf neighbor
+show ip route ospf
+show running-config
+wr
+
+
+
+
+R7>>
+
+ena
+conf t
+int fa 0/0
+no shut
+ip add 198.51.100.1 255.255.255.252
+ex
+
+
+
+
+R8>>
+
+ena
+conf t
+int se 2/0
+no shut
+ip add 203.0.113.2 255.255.255.252
+ex
+
